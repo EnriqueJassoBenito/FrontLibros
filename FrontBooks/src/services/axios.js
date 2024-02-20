@@ -22,8 +22,45 @@ const getByIdBooks = async (id) => {
     }
 }
 
+const buscarLibroNombreAutor=async(nombre)=>{
+    try{
+        const response = await axios.get(`${URL}/bookBynameOrautor/${nombre}`);
+        return response.data;
+    }catch(error){
+        throw error;
+    }
+}
+
+const buscarLibroGenero=async(nombre)=>{
+    try{
+        const response = await axios.get(`${URL}/bookByGenero/${nombre}`);
+        return response.data;
+    }catch(error){
+        throw error;
+    }
+}
+
+const buscarfechas = async(f1, f2)=>{
+    try {
+        const response = await axios.get(`${URL}/bookByFechas/${f1}&${f2}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const buscarFecha = async(f)=>{
+    try {
+        const response = await axios.get(`${URL}/bookByFecha/${f}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
 const postBooks = async (data) => {
     try{
+        console.log("azios_ ",data)
         const response = await axios.post(`${URL}/`,data);
         return response.data;
     }catch (error){
@@ -34,5 +71,9 @@ const postBooks = async (data) => {
 export default {
     getAllBooks,
     getByIdBooks,
-    postBooks
+    postBooks,
+    buscarLibroNombreAutor,
+    buscarfechas,
+    buscarLibroGenero,
+    buscarFecha
 }
