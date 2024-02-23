@@ -6,21 +6,13 @@
     <b-container>
       <b-row>
         <b-col>
-          <b-input
-            v-model="filtros.nombreAutorInput"
-            type="text"
-            placeholder="Ingrese nombre o autor"
-          />
+          <b-input v-model="filtros.nombreAutorInput" type="text" placeholder="Ingrese nombre o autor" />
           <b-btn @click="buscarLibroPorNombreAutor()">
             Buscar por Nombre/Autor
           </b-btn>
         </b-col>
         <b-col>
-          <b-input
-            v-model="filtros.generoInput"
-            type="text"
-            placeholder="Ingrese género"
-          />
+          <b-input v-model="filtros.generoInput" type="text" placeholder="Ingrese género" />
           <b-btn @click="buscarLibroPorGenero()">Buscar por Género</b-btn>
         </b-col>
         <b-col>
@@ -36,78 +28,37 @@
     <div class="btn-post">
       <b-button v-b-modal.modal-1 variant="success">+</b-button>
 
-      <b-modal
-        id="modal-1"
-        ref="modal"
-        title="Registrar nuevo libro"
-        hide-footer
-      >
+      <b-modal id="modal-1" ref="modal" title="Registrar nuevo libro" hide-footer>
         <form inline ref="form" @change="postBooks">
           <b-form-group label="Nombre" label-for="name-input">
-            <b-form-input
-              required
-              id="name-input"
-              v-model="postbody.nombrebook"
-            ></b-form-input>
+            <b-form-input required id="name-input" v-model="postbody.nombrebook"></b-form-input>
           </b-form-group>
 
           <b-form-group label="Autor" label-for="autor-input">
-            <b-form-input
-              required
-              id="autor-input"
-              v-model="postbody.autor"
-            ></b-form-input>
+            <b-form-input required id="autor-input" v-model="postbody.autor"></b-form-input>
           </b-form-group>
 
           <b-form-group label="Editorial" label-for="editorial-input">
-            <b-form-input
-              required
-              id="editorial-input"
-              v-model="postbody.editorial"
-            ></b-form-input>
+            <b-form-input required id="editorial-input" v-model="postbody.editorial"></b-form-input>
           </b-form-group>
 
           <b-form-group label="Fecha de publicación" label-for="año-input">
-            <b-form-input
-              required
-              type="date"
-              id="año-input"
-              v-model="postbody.fecha"
-            ></b-form-input>
+            <b-form-input required type="date" id="año-input" v-model="postbody.fecha"></b-form-input>
           </b-form-group>
 
           <b-form-group label="Genero" label-for="genero-input">
-            <b-form-input
-              required
-              id="genero-input"
-              v-model="postbody.genero"
-            ></b-form-input>
+            <b-form-input required id="genero-input" v-model="postbody.genero"></b-form-input>
           </b-form-group>
         </form>
 
-        <b-button class="btn-cancelar" variant="danger" @click="hideModal"
-          >Cancelar</b-button
-        >
-        <b-button
-          class="btn-aceptar"
-          variant="success"
-          type="submit"
-          @click="hideModal"
-          >Aceptar</b-button
-        >
+        <b-button class="btn-cancelar" variant="danger" @click="hideModal">Cancelar</b-button>
+        <b-button class="btn-aceptar" variant="success" type="submit" @click="hideModal">Aceptar</b-button>
       </b-modal>
     </div>
 
     <!-- Cards para agregar libros -->
     <b-row>
-      <b-col
-        sm="6"
-        md="4"
-        lg="2"
-        v-for="libro in libros"
-        :key="libro.id"
-        class="cards-1"
-      >
+      <b-col sm="6" md="4" lg="2" v-for="libro in libros" :key="libro.id" class="cards-1">
         <b-card :title="libro.nombrebook">
           <b-card-text>
             <span class="text-span">Autor:</span> {{ libro.autor }}
@@ -248,7 +199,9 @@ export default {
             (a, b) => new Date(b.fecha) - new Date(a.fecha)
           );
         } else {
-          alert("Debe proporcionar al menos una fecha para busqueda específica o ambas para busqueda entre rango de fechas");
+          alert(
+            "Debe proporcionar al menos una fecha para busqueda específica o ambas para busqueda entre rango de fechas"
+          );
         }
       } catch (error) {
         console.error("Error al buscar libros por Fechas:", error);

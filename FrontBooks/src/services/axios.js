@@ -60,7 +60,7 @@ const buscarFecha = async(f)=>{
 
 const postBooks = async (data) => {
     try{
-        console.log("azios_ ",data)
+        // console.log("azios_ ",data)
         const response = await axios.post(`${URL}/`,data);
         return response.data;
     }catch (error){
